@@ -1,2 +1,3 @@
 # flask-livekit-server
-To get token to connect to the livekit room
+
+An API build with flask to get a token to connect to a room 
