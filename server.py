@@ -7,7 +7,7 @@ app = Flask(__name__)
 @app.route('/token')
 def getToken():
     return jsonify("BONJOUR")
-    participant_identity = request.headers.get('identity')
+    """participant_identity = request.headers.get('identity')
     participant_name = request.headers.get('name')
     room_name = request.headers.get('room')
 
@@ -23,7 +23,7 @@ def getToken():
         room=room_name,
     ))
 
-    return token.to_jwt()
+    return token.to_jwt()"""
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
