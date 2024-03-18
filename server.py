@@ -22,7 +22,7 @@ def getToken():
         room=room_name,
     ))
 
-    return token.to_jwt()
+    return jsonify({"token": token.to_jwt()})
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
