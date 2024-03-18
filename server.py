@@ -1,14 +1,18 @@
 import os
 from livekit import api
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
 @app.route('/token')
 def getToken():
-    participant_identity = request.headers.get('identity', 'default_identity')
-    participant_name = request.headers.get('name', 'default_name')
-    room_name = request.headers.get('room', 'default_room')
+    participant_identity = request.headers.get('identity')
+    participant_name = request.headers.get('name')
+    room_name = request.headers.get('room')
+
+    if not all([participant_identity, participant_name, room_name]):
+        return jsonify({"error": "Missing required headers: Identity, Name, Room"}), 400
+
 
     token = api.AccessToken(os.getenv('LIVEKIT_API_KEY'), os.getenv('LIVEKIT_API_SECRET')) \
     .with_identity(participant_identity) \
