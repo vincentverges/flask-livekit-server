@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 @app.route('/token')
 def getToken():
+    return jsonify("BONJOUR")
     participant_identity = request.headers.get('identity')
     participant_name = request.headers.get('name')
     room_name = request.headers.get('room')
